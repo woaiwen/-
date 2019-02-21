@@ -1,0 +1,7 @@
+name: KingdomStudy
+main: yswz.info.main.Main
+version: 1.0.1
+commands:
+  ks:
+    description: ks
+    usage: /<command>
