@@ -1,23 +1,26 @@
 package yswz.info.main;
 
-import java.awt.List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 import org.kingdoms.constants.kingdom.Kingdom;
 
 import yswz.info.Science.TotalScience;
-public class RandomScience {
+public class RandomScience {//一个用于抽取各种科技的类
 	File Sciencefile = new File(".//plugins//KingdomScience//ScienceList");
 	TotalScience ts = new TotalScience();
+	Random rand = new Random();//创建一个随机数字生成器
 	String[] Sl = Sciencefile.list();//获取所有科技
-	List SM;
-	List SP;
-	List SS;
+	ArrayList<String> SM = new ArrayList<>();
+	ArrayList<String> SP = new ArrayList<>();
+	ArrayList<String> SS = new ArrayList<>();
 	String[] s;
 	boolean sal=false;
-	public int RandomMilitary(Kingdom kingdom){//返回一个1开头的科研项目
+	public int RandomMilitary(Kingdom kingdom) throws IOException{//返回一个1开头的科研项目
 		for (int i = 0; i < Sl.length; i++) {
 			String str = Sl[i];//第i个科技的名字
 			char[] c = str.toCharArray();
@@ -45,14 +48,16 @@ public class RandomScience {
 						}
 					}
 					if(ess){
-						SM.add(Sl[i]);//将整个科技列入库中
+						SM.add(Sl[i]);//将这个科技列入库中
 					}
 				}
 			}
 		}
-		return 库中抽取;
+		int ri = rand.nextInt(SM.size());
+		int is = Integer.parseInt(SM.get(ri));//将抽取到的科技转化为int值
+		return is;
 	}
-	public int RandomProject(Kingdom kingdom){//返回一个2开头的科研项目
+	public int RandomProject(Kingdom kingdom) throws IOException{//返回一个2开头的科研项目
 		for (int i = 0; i < Sl.length; i++) {
 			String str = Sl[i];//第i个科技的名字
 			char[] c = str.toCharArray();
@@ -80,14 +85,16 @@ public class RandomScience {
 						}
 					}
 					if(ess){
-						SP.add(Sl[i]);//将整个科技列入库中
+						SP.add(Sl[i]);//将这个科技列入库中
 					}
 				}
 			}
 		}
-		return 库中抽取;
+		int ri = rand.nextInt(SP.size());
+		int is = Integer.parseInt(SP.get(ri));//将抽取到的科技转化为int值
+		return is;
 	}
-	public int RandomSociety(Kingdom kingdom){//返回一个3开头的科研项目
+	public int RandomSociety(Kingdom kingdom) throws IOException{//返回一个3开头的科研项目
 		for (int i = 0; i < Sl.length; i++) {
 			String str = Sl[i];//第i个科技的名字
 			char[] c = str.toCharArray();
@@ -115,11 +122,13 @@ public class RandomScience {
 						}
 					}
 					if(ess){
-						SS.add(Sl[i]);//将整个科技列入库中
+						SS.add(Sl[i]);//将这个科技列入库中
 					}
 				}
 			}
 		}
-		return 库中抽取;
+		int ri = rand.nextInt(SM.size());
+		int is = Integer.parseInt(SM.get(ri));//将抽取到的科技转化为int值
+		return is;
 	}
 }
